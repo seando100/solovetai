@@ -73,7 +73,7 @@ const Pricing = () => {
               </ul>
 
               <a
-                href="#waitlist"
+                href="/#waitlist"
                 className="block w-full border border-[#0F2745] text-[#0F2745] text-sm font-medium px-6 py-3.5 rounded-md hover:bg-slate-50 transition text-center"
               >
                 Join the Waitlist
@@ -117,7 +117,7 @@ const Pricing = () => {
               </ul>
 
               <a
-                href="#waitlist"
+                href="/#waitlist"
                 className="block w-full bg-[#0F2745] text-white text-sm font-medium px-6 py-3.5 rounded-md hover:bg-[#0C2038] transition text-center"
               >
                 Join the Waitlist
@@ -155,7 +155,7 @@ const Pricing = () => {
               </ul>
 
               <a
-                href="#waitlist"
+                href="/#waitlist"
                 className="block w-full border border-[#0F2745] text-[#0F2745] text-sm font-medium px-6 py-3.5 rounded-md hover:bg-slate-50 transition text-center"
               >
                 Join the Waitlist
@@ -263,7 +263,7 @@ const Pricing = () => {
             SoloVetAI is coming Q2 2026. Join the waitlist to be first in line.
           </p>
           <a
-            href="#waitlist"
+            href="/#waitlist"
             className="bg-[#0F2745] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#0C2038] transition inline-flex items-center"
           >
             Join the Waitlist
