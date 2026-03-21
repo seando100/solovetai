@@ -14,6 +14,8 @@ import Contact from "./pages/Contact";
 import MarketingLayout from "./components/layout/MarketingLayout";
 import BlogList from "./pages/blog/BlogList";
 import BlogPost from "./pages/blog/BlogPost";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 const queryClient = new QueryClient();
@@ -50,6 +52,9 @@ const App = () => (
           <Route path="/contact" element={<MarketingLayout><Contact /></MarketingLayout>} />
           <Route path="/blog" element={<MarketingLayout><BlogList /></MarketingLayout>} />
           <Route path="/blog/:slug" element={<MarketingLayout><BlogPost /></MarketingLayout>} />
+
+          <Route path="/privacy" element={<MarketingLayout><Privacy /></MarketingLayout>} />
+          <Route path="/terms" element={<MarketingLayout><Terms /></MarketingLayout>} />
 
           {/* 404 Catch-All */}
           <Route path="*" element={<NotFound />} />
