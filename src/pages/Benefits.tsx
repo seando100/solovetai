@@ -1,27 +1,28 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { MessageSquare, FileText, Phone, ArrowRight, Briefcase, Heart, ChevronRight, Globe, Clock, Upload, Shield, Brain, Sparkles, Link2, Zap, Rss } from 'lucide-react';
 
 // Reusable benefit card components
-const VetCard = ({ title, body }: { title: string; body: string }) => (
+const VetCard = ({ title, body, forYouLabel }: { title: string; body: string; forYouLabel: string }) => (
   <div className="bg-white border border-slate-200 rounded-xl p-5 max-w-sm w-full shadow-sm">
     <div className="flex items-center gap-3 mb-2">
       <div className="w-8 h-8 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
         <Briefcase className="h-4 w-4 text-[#0F2745]" />
       </div>
-      <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">For You</span>
+      <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">{forYouLabel}</span>
     </div>
     <p className="text-sm font-semibold text-slate-800 mb-1">{title}</p>
     <p className="text-sm text-slate-500 leading-relaxed">{body}</p>
   </div>
 );
 
-const PetOwnerCard = ({ title, body }: { title: string; body: string }) => (
+const PetOwnerCard = ({ title, body, forPetOwnersLabel }: { title: string; body: string; forPetOwnersLabel: string }) => (
   <div className="bg-white border border-slate-200 rounded-xl p-5 max-w-sm w-full shadow-sm">
     <div className="flex items-center gap-3 mb-2">
       <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
         <Heart className="h-4 w-4 text-emerald-600" />
       </div>
-      <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">For Pet Owners</span>
+      <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">{forPetOwnersLabel}</span>
     </div>
     <p className="text-sm font-semibold text-slate-800 mb-1">{title}</p>
     <p className="text-sm text-slate-500 leading-relaxed">{body}</p>
@@ -39,18 +40,21 @@ const StepIcon = ({ icon: Icon, label, showLine = true }: { icon: React.ElementT
 );
 
 const Benefits = () => {
+  const { t } = useTranslation();
+
+  const forYouLabel = t('benefits.forYou');
+  const forPetOwnersLabel = t('benefits.forPetOwners');
+
   return (
     <>
       {/* ── Hero ── */}
       <section className="pt-16 md:pt-24 pb-12 md:pb-16">
         <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Better for You. Better for Pet Owners.
+            {t('benefits.hero.title')}
           </h1>
           <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            When your intake runs smarter, everyone wins. You reclaim your time and walk into every
-            appointment prepared. Your pet owners get the responsive, professional experience they
-            deserve — from the very first interaction.
+            {t('benefits.hero.subtitle')}
           </p>
         </div>
       </section>
@@ -59,9 +63,9 @@ const Benefits = () => {
       <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">The Intake Journey</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">{t('benefits.journey.title')}</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Follow a pet owner from first contact to first appointment — and see how every step creates value for both sides.
+              {t('benefits.journey.subtitle')}
             </p>
           </div>
 
@@ -70,60 +74,68 @@ const Benefits = () => {
             {/* Step 1: Pet Owner Reaches Out */}
             <div className="flex md:justify-end">
               <VetCard
-                title="Never miss a new patient"
-                body="Intake runs 24/7 — nights, weekends, holidays. Every pet owner is captured the moment they reach out. No more lost leads to voicemail or after-hours gaps."
+                title={t('benefits.journey.step1.vet.title')}
+                body={t('benefits.journey.step1.vet.body')}
+                forYouLabel={forYouLabel}
               />
             </div>
-            <StepIcon icon={Phone} label="Pet Owner Reaches Out" />
+            <StepIcon icon={Phone} label={t('benefits.journey.step1.label')} />
             <div className="flex md:justify-start">
               <PetOwnerCard
-                title="Get help the moment your pet needs it"
-                body="No voicemail, no waiting until Monday. Reach out at 2am on a Sunday and get an immediate, caring response. Your pet's care journey starts on your schedule."
+                title={t('benefits.journey.step1.owner.title')}
+                body={t('benefits.journey.step1.owner.body')}
+                forPetOwnersLabel={forPetOwnersLabel}
               />
             </div>
 
             {/* Step 2: AI Conversation */}
             <div className="flex md:justify-end">
               <VetCard
-                title="Every detail captured automatically"
-                body="Structured intake with all the facts you need — no scribbled notes, no missed details, no 20-minute fact-finding calls. Every answer organized and ready for review."
+                title={t('benefits.journey.step2.vet.title')}
+                body={t('benefits.journey.step2.vet.body')}
+                forYouLabel={forYouLabel}
               />
             </div>
-            <StepIcon icon={MessageSquare} label="AI Conversation" />
+            <StepIcon icon={MessageSquare} label={t('benefits.journey.step2.label')} />
             <div className="flex md:justify-start">
               <PetOwnerCard
-                title="Tell your pet's story once — conversationally"
-                body="No intimidating forms. A warm, empathetic conversation that feels like talking to a real person — in English or Spanish. Share your pet's situation at your own pace."
+                title={t('benefits.journey.step2.owner.title')}
+                body={t('benefits.journey.step2.owner.body')}
+                forPetOwnersLabel={forPetOwnersLabel}
               />
             </div>
 
             {/* Step 3: Vet Reviews */}
             <div className="flex md:justify-end">
               <VetCard
-                title="Walk into every exam fully prepared"
-                body="AI-generated intake brief with breed-specific flags, symptom patterns, and diagnostic suggestions — before you ever enter the exam room. Know the patient, the risks, and the right questions."
+                title={t('benefits.journey.step3.vet.title')}
+                body={t('benefits.journey.step3.vet.body')}
+                forYouLabel={forYouLabel}
               />
             </div>
-            <StepIcon icon={FileText} label="Vet Reviews" />
+            <StepIcon icon={FileText} label={t('benefits.journey.step3.label')} />
             <div className="flex md:justify-start">
               <PetOwnerCard
-                title="Your vet already understands your pet's situation"
-                body="No repeating yourself. No starting from zero. Your first real conversation starts where it should — with a care plan, options, and next steps."
+                title={t('benefits.journey.step3.owner.title')}
+                body={t('benefits.journey.step3.owner.body')}
+                forPetOwnersLabel={forPetOwnersLabel}
               />
             </div>
 
             {/* Step 4: First Appointment */}
             <div className="flex md:justify-end">
               <VetCard
-                title="More time for what matters"
-                body="Spend your time on patient care and pet owner relationships — not copying intake notes from voicemail or chasing down basic facts. Focus on practicing veterinary medicine."
+                title={t('benefits.journey.step4.vet.title')}
+                body={t('benefits.journey.step4.vet.body')}
+                forYouLabel={forYouLabel}
               />
             </div>
-            <StepIcon icon={ChevronRight} label="First Appointment" showLine={false} />
+            <StepIcon icon={ChevronRight} label={t('benefits.journey.step4.label')} showLine={false} />
             <div className="flex md:justify-start">
               <PetOwnerCard
-                title="A faster path to care for your pet"
-                body="From 'My pet needs help' to a prepared appointment — faster than you thought possible. The experience of a large clinic with the personal touch of a solo practitioner."
+                title={t('benefits.journey.step4.owner.title')}
+                body={t('benefits.journey.step4.owner.body')}
+                forPetOwnersLabel={forPetOwnersLabel}
               />
             </div>
           </div>
@@ -134,9 +146,9 @@ const Benefits = () => {
       <section className="py-16 md:py-24 bg-slate-50 border-y border-slate-100">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Every Feature, Two Winners</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">{t('benefits.features.title')}</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Beyond the intake journey, every capability in SoloVetAI creates a ripple effect — making your practice more efficient and your pet owners' experience more professional.
+              {t('benefits.features.subtitle')}
             </p>
           </div>
 
@@ -147,16 +159,16 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Globe className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">Bilingual Intake</h3>
+                <h3 className="text-base font-semibold">{t('benefits.bilingual.title')}</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Serve Spanish-speaking pet owners without hiring bilingual staff or paying for translation services.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.bilingual.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Communicate in the language you're most comfortable in — from the very first interaction.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.bilingual.owner')}</p>
                 </div>
               </div>
             </div>
@@ -167,17 +179,17 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Phone className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">AI Phone Intake</h3>
-                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">Pro+</span>
+                <h3 className="text-base font-semibold">{t('benefits.phone.title')}</h3>
+                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">{t('benefits.phone.badge')}</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">A dedicated phone line that handles intake calls 24/7. Same structured summary, zero phone tag.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.phone.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Prefer talking over typing? Call anytime and speak naturally — no hold music, no phone trees.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.phone.owner')}</p>
                 </div>
               </div>
             </div>
@@ -188,17 +200,17 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Upload className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">Document Intelligence</h3>
-                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">Pro+</span>
+                <h3 className="text-base font-semibold">{t('benefits.docIntel.title')}</h3>
+                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">{t('benefits.docIntel.badge')}</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">AI analyzes uploaded vaccination records, prior vet records, and lab results — extracting key details and flags before you review.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.docIntel.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">A simple, secure way to share what's needed. Clear checklist, encrypted upload, no confusion.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.docIntel.owner')}</p>
                 </div>
               </div>
             </div>
@@ -209,16 +221,16 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Clock className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">Triage & Urgency Detection</h3>
+                <h3 className="text-base font-semibold">{t('benefits.triage.title')}</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Color-coded aging, symptom urgency flags, and breed-specific alerts so you prioritize what matters most.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.triage.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Time-sensitive concerns get flagged and fast-tracked. Your pet's urgent situation gets the attention it deserves.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.triage.owner')}</p>
                 </div>
               </div>
             </div>
@@ -229,16 +241,16 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Shield className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">Privacy & Security</h3>
+                <h3 className="text-base font-semibold">{t('benefits.privacy.title')}</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">End-to-end encryption, veterinary confidentiality protections, and 30-day document retention with deletion rights.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.privacy.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Your information is protected from the start. No human sees your data — fully automated, fully encrypted.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.privacy.owner')}</p>
                 </div>
               </div>
             </div>
@@ -249,16 +261,16 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <MessageSquare className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">Website Widget</h3>
+                <h3 className="text-base font-semibold">{t('benefits.widget.title')}</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">One line of code embeds intake directly on your WordPress or any website. Capture leads where they already are.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.widget.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Start your intake without leaving your practice's website. No new tabs, no separate portals, no friction.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.widget.owner')}</p>
                 </div>
               </div>
             </div>
@@ -269,17 +281,17 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Brain className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">AI Intelligence Brief</h3>
-                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">Pro+</span>
+                <h3 className="text-base font-semibold">{t('benefits.aiBrief.title')}</h3>
+                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">{t('benefits.aiBrief.badge')}</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Every intake generates a deep-dive analysis — breed-specific flags, symptom patterns, diagnostic suggestions, and the follow-up questions that matter most.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.aiBrief.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Your vet spots potential issues specific to your pet's breed and symptoms — not just the one concern you called about. Nothing falls through the cracks.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.aiBrief.owner')}</p>
                 </div>
               </div>
             </div>
@@ -290,17 +302,17 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Sparkles className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">Marketing Kit</h3>
-                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">Pro</span>
+                <h3 className="text-base font-semibold">{t('benefits.marketingKit.title')}</h3>
+                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">{t('benefits.marketingKit.badge')}</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Generate branded social posts and visual cards for Facebook, Instagram, LinkedIn, and Nextdoor in seconds — no designer, no copywriter needed.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.marketingKit.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Find your vet where you already browse — on social media, local directories, and community boards. One click starts your intake.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.marketingKit.owner')}</p>
                 </div>
               </div>
             </div>
@@ -311,16 +323,16 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Link2 className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">CRM Integration</h3>
+                <h3 className="text-base font-semibold">{t('benefits.crm.title')}</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Connect HubSpot (free) and every completed intake automatically creates a contact with full details and AI context notes. Zero manual data entry.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.crm.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Your vet has your information organized and ready before you walk in. Faster follow-ups, fewer repeat questions.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.crm.owner')}</p>
                 </div>
               </div>
             </div>
@@ -331,16 +343,16 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Zap className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">Zapier &amp; Webhooks</h3>
+                <h3 className="text-base font-semibold">{t('benefits.zapier.title')}</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Send intake data to Google Sheets, Slack, Mailchimp, or any of 6,000+ apps automatically. Build the workflow that fits your practice.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.zapier.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Your submission triggers the right actions immediately — appointment scheduling, welcome emails, or follow-up reminders — without anyone manually pushing buttons.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.zapier.owner')}</p>
                 </div>
               </div>
             </div>
@@ -351,17 +363,17 @@ const Benefits = () => {
                 <div className="w-10 h-10 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                   <Rss className="h-5 w-5 text-[#0F2745]" />
                 </div>
-                <h3 className="text-base font-semibold">AI Blog Generation</h3>
-                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">Pro</span>
+                <h3 className="text-base font-semibold">{t('benefits.blogGen.title')}</h3>
+                <span className="text-[10px] font-semibold text-[#0F2745] bg-[#0F2745]/8 px-2 py-0.5 rounded-full uppercase tracking-wide">{t('benefits.blogGen.badge')}</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">For You</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Generate SEO-optimized blog posts tailored to your specialties and location. Each post comes with title, article, keywords, and a social media teaser — content marketing without the struggle.</p>
+                  <p className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider mb-1">{forYouLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.blogGen.vet')}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">For Pet Owners</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">Find helpful, expert pet care content from a local vet you can trust — not generic internet advice. When you're ready, your vet is one click away.</p>
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">{forPetOwnersLabel}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{t('benefits.blogGen.owner')}</p>
                 </div>
               </div>
             </div>
@@ -373,32 +385,30 @@ const Benefits = () => {
       <section className="py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
-            The Real Difference
+            {t('benefits.cta.title')}
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed mb-8">
-            Solo veterinarians don't have vet techs handling phones, intake coordinators, or 24/7 answering services.
-            Your pet owners don't know that — and with SoloVetAI, they'll never need to. Every interaction
-            feels like a large clinic with the personal attention only a solo practitioner can provide.
+            {t('benefits.cta.body')}
           </p>
           <p className="text-sm text-slate-400 mb-10">
-            Great pet owner experiences start before the first appointment.
+            {t('benefits.cta.tagline')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/#waitlist"
               className="bg-[#0F2745] text-white px-8 py-3.5 rounded-md text-sm font-semibold hover:bg-[#0C2038] transition inline-flex items-center gap-2"
             >
-              Join the Waitlist
+              {t('benefits.cta.joinWaitlist')}
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               to="/features"
               className="text-sm font-medium text-slate-500 hover:text-slate-900 transition"
             >
-              See all features →
+              {t('benefits.cta.seeFeatures')}
             </Link>
           </div>
-          <p className="mt-3 text-xs text-slate-400">14-day free trial · Cancel anytime</p>
+          <p className="mt-3 text-xs text-slate-400">{t('benefits.cta.trialNote')}</p>
         </div>
       </section>
     </>

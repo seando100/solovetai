@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { MessageSquare, FileText, Sparkles, Phone, Clock, UserX, ArrowRight, Check, Lock, Globe, Mail, Zap, Upload, Briefcase, Heart, ChevronRight, Brain } from 'lucide-react';
 
 // ─── Hero Illustration ────────────────────────────────────────────────────────
@@ -97,6 +98,7 @@ const HeroIllustration = () => (
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 const Index = () => {
+  const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -122,34 +124,34 @@ const Index = () => {
               <div className="flex items-center gap-3 mb-6">
                 <div className="inline-flex items-center gap-2 text-xs font-semibold text-[#0F2745] bg-[#0F2745]/8 px-3 py-1.5 rounded-full uppercase tracking-widest">
                   <Zap className="h-3 w-3" />
-                  AI-Powered Veterinary Intake
+                  {t('index.hero.badge')}
                 </div>
                 <div className="inline-flex items-center gap-2 text-xs font-semibold text-white bg-[#10B981] px-3 py-1.5 rounded-full uppercase tracking-widest">
-                  Coming Q2 2026
+                  {t('index.hero.launchBadge')}
                 </div>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1]">
-                Your Next Patient Intake Runs Itself.
+                {t('index.hero.title')}
               </h1>
               <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed">
-                SoloVetAI handles client intake by chat, phone, or website widget — captures every detail about the animal's symptoms and history, and delivers a structured visit summary with AI context notes — so your team is prepared before the first appointment.
+                {t('index.hero.subtitle')}
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <a
                   href="#waitlist"
                   className="bg-[#0F2745] text-white px-7 py-3.5 rounded-md text-sm font-medium hover:bg-[#0C2038] transition inline-flex items-center gap-2"
                 >
-                  Join the Waitlist
+                  {t('index.hero.cta')}
                   <ArrowRight className="h-4 w-4" />
                 </a>
                 <Link
                   to="/features"
                   className="text-sm font-medium text-slate-500 hover:text-slate-900 transition"
                 >
-                  See all features →
+                  {t('index.hero.seeFeatures')}
                 </Link>
               </div>
-              <p className="mt-3 text-xs text-slate-500">Be the first to know when we launch</p>
+              <p className="mt-3 text-xs text-slate-500">{t('index.hero.launchNotice')}</p>
             </div>
             <div className="relative lg:pl-8">
               <HeroIllustration />
@@ -163,11 +165,11 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {[
-              { icon: Lock,         label: 'Encrypted & secure'         },
-              { icon: Globe,        label: 'English & Spanish'          },
-              { icon: Phone,        label: 'Chat, phone & widget intake' },
-              { icon: Mail,         label: 'Instant email alerts'       },
-              { icon: Zap,          label: 'Setup in under 10 minutes'  },
+              { icon: Lock,         label: t('index.trust.encrypted')     },
+              { icon: Globe,        label: t('index.trust.bilingual')     },
+              { icon: Phone,        label: t('index.trust.intakeModes')   },
+              { icon: Mail,         label: t('index.trust.emailAlerts')   },
+              { icon: Zap,          label: t('index.trust.setupTime')     },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2 text-slate-500">
                 <Icon className="h-3.5 w-3.5 text-[#0F2745]/60 flex-shrink-0" />
@@ -182,27 +184,27 @@ const Index = () => {
       <section className="py-20 md:py-28 bg-[#0F2745]">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">Sound familiar?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">{t('index.pain.title')}</h2>
             <p className="text-lg text-white/75 max-w-2xl mx-auto">
-              Solo veterinarians lose time and pet owners to the same three problems every day.
+              {t('index.pain.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: Phone,
-                title: 'Phone rings non-stop',
-                body: 'A worried pet owner calls while you\'re in an exam room. They leave a voicemail. You call back between appointments. They don\'t answer. By the time you connect, they\'ve taken their pet somewhere else.',
+                title: t('index.pain.phone.title'),
+                body: t('index.pain.phone.body'),
               },
               {
                 icon: Clock,
-                title: 'Every visit starts from zero',
-                body: 'You spend the first 10 minutes of every new patient visit learning basics — pet name, breed, symptoms, history — that you could have captured before they walked in.',
+                title: t('index.pain.zero.title'),
+                body: t('index.pain.zero.body'),
               },
               {
                 icon: UserX,
-                title: 'After-hours emergencies go dark',
-                body: 'A pet owner\'s dog starts limping at 10pm on a Saturday. They search for vets, find your website, and have no way to tell you what\'s wrong. They call the 24-hour emergency clinic instead.',
+                title: t('index.pain.afterHours.title'),
+                body: t('index.pain.afterHours.body'),
               },
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="bg-white/8 border border-white/10 rounded-xl p-6">
@@ -215,7 +217,7 @@ const Index = () => {
             ))}
           </div>
           <p className="text-center text-white/65 text-sm mt-10">
-            SoloVetAI handles all three — automatically.
+            {t('index.pain.resolution')}
           </p>
         </div>
       </section>
@@ -224,51 +226,51 @@ const Index = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Everything you need. Nothing you don't.</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">{t('index.features.title')}</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Six powerful capabilities that transform how solo veterinarians manage new patients.
+              {t('index.features.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: MessageSquare,
-                title: 'AI Client Intake',
-                body: 'A branded AI assistant collects every detail you need — via chat, form, or website widget, in English or Spanish — while you focus on your patients.',
+                title: t('index.features.aiIntake.title'),
+                body: t('index.features.aiIntake.body'),
                 link: '/features#ai-intake',
               },
               {
                 icon: Phone,
-                title: 'AI Phone Intake',
+                title: t('index.features.phoneIntake.title'),
                 badge: 'Pro+',
-                body: 'A dedicated phone number where pet owners speak naturally with your AI assistant. Every call becomes a structured summary — 24/7, no hold music.',
+                body: t('index.features.phoneIntake.body'),
                 link: '/features#phone-intake',
               },
               {
                 icon: FileText,
-                title: 'Visit Summary & AI Notes',
-                body: 'Every intake lands in your inbox as a structured summary with AI-generated context: symptom analysis, breed-specific flags, and suggested follow-up questions.',
+                title: t('index.features.visitSummary.title'),
+                body: t('index.features.visitSummary.body'),
                 link: '/features#visit-summary',
               },
               {
                 icon: Upload,
-                title: 'Document Intelligence',
+                title: t('index.features.docIntel.title'),
                 badge: 'Pro+',
-                body: 'Request records from pet owners, receive secure uploads, and get AI-powered summaries with vaccination history, prior diagnoses, and treatment-relevant highlights.',
+                body: t('index.features.docIntel.body'),
                 link: '/features#document-intelligence',
               },
               {
                 icon: Brain,
-                title: 'AI Intelligence Brief',
+                title: t('index.features.aiBrief.title'),
                 badge: 'Pro+',
-                body: 'Every intake generates a deep-dive analysis — breed-specific health flags, symptom pattern recognition, urgency assessment, and suggested diagnostics.',
+                body: t('index.features.aiBrief.body'),
                 link: '/features#intelligence-brief',
               },
               {
                 icon: Sparkles,
-                title: 'Marketing Kit',
+                title: t('index.features.marketingKit.title'),
                 badge: 'Pro',
-                body: 'Generate platform-ready social posts and branded visual cards for Facebook, Instagram, LinkedIn, and Nextdoor — in seconds.',
+                body: t('index.features.marketingKit.body'),
                 link: '/features#marketing-kit',
               },
             ].map(({ icon: Icon, title, badge, body, link }) => (
@@ -284,7 +286,7 @@ const Index = () => {
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">{body}</p>
                 <Link to={link} className="text-xs font-semibold text-[#0F2745] hover:underline inline-flex items-center gap-1">
-                  Learn more <ArrowRight className="h-3 w-3" />
+                  {t('index.features.learnMore')} <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
             ))}
@@ -296,9 +298,9 @@ const Index = () => {
       <section className="py-20 md:py-28 bg-slate-50 border-y border-slate-100">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Up and running in minutes</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">{t('index.howItWorks.title')}</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              From first login to receiving your first intake — three simple steps.
+              {t('index.howItWorks.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-10 relative">
@@ -308,20 +310,20 @@ const Index = () => {
               {
                 number: '01',
                 icon: Zap,
-                title: 'Set up your profile',
-                description: 'Upload your logo, set your assistant\'s name, add your specialties and intake questions, and get your unique client intake link — in under 10 minutes.',
+                title: t('index.howItWorks.step1.title'),
+                description: t('index.howItWorks.step1.description'),
               },
               {
                 number: '02',
                 icon: MessageSquare,
-                title: 'Share your intake link',
-                description: 'Add it to your website, email signature, social profiles, or anywhere you connect with pet owners. Your AI handles every conversation — 24/7.',
+                title: t('index.howItWorks.step2.title'),
+                description: t('index.howItWorks.step2.description'),
               },
               {
                 number: '03',
                 icon: FileText,
-                title: 'Review and respond',
-                description: 'Get a structured summary with AI context notes the moment a pet owner submits. Know the symptoms, the history, and the right questions before you ever walk into the exam room.',
+                title: t('index.howItWorks.step3.title'),
+                description: t('index.howItWorks.step3.description'),
               },
             ].map(({ number, icon: Icon, title, description }) => (
               <div key={number} className="flex flex-col items-center text-center relative">
@@ -342,10 +344,10 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-              Better for You. Better for Pet Owners.
+              {t('index.dualBenefit.title')}
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              When your intake runs smarter, everyone wins — you reclaim your time, and pet owners get the responsive, prepared experience they deserve.
+              {t('index.dualBenefit.subtitle')}
             </p>
           </div>
 
@@ -359,17 +361,17 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                     <Briefcase className="h-4 w-4 text-[#0F2745]" />
                   </div>
-                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">For You</span>
+                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">{t('index.dualBenefit.forYou')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">Never miss a new patient</p>
-                <p className="text-sm text-slate-500 leading-relaxed">Intake runs 24/7 — nights, weekends, holidays. Every pet owner is captured the moment they reach out.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step1.vet.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step1.vet.body')}</p>
               </div>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 rounded-full bg-[#0F2745] flex items-center justify-center shadow-lg ring-4 ring-[#0F2745]/10">
                 <Phone className="h-6 w-6 text-white" />
               </div>
-              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">Pet Owner Reaches Out</p>
+              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">{t('index.dualBenefit.step1.label')}</p>
               <div className="hidden md:block w-px h-8 bg-slate-200 mt-3" />
             </div>
             <div className="flex md:justify-start">
@@ -378,10 +380,10 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
                     <Heart className="h-4 w-4 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">For Pet Owners</span>
+                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">{t('index.dualBenefit.forPetOwners')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">Get help the moment your pet needs it</p>
-                <p className="text-sm text-slate-500 leading-relaxed">No voicemail, no waiting until Monday. Reach out at 2am when your pet is in distress and get an immediate, caring response.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step1.owner.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step1.owner.body')}</p>
               </div>
             </div>
 
@@ -392,17 +394,17 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                     <Briefcase className="h-4 w-4 text-[#0F2745]" />
                   </div>
-                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">For You</span>
+                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">{t('index.dualBenefit.forYou')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">Every detail captured automatically</p>
-                <p className="text-sm text-slate-500 leading-relaxed">Structured intake with pet history, symptoms, and timeline — no scribbled notes, no missed details, no 10-minute fact-finding at check-in.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step2.vet.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step2.vet.body')}</p>
               </div>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 rounded-full bg-[#0F2745] flex items-center justify-center shadow-lg ring-4 ring-[#0F2745]/10">
                 <MessageSquare className="h-6 w-6 text-white" />
               </div>
-              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">AI Conversation</p>
+              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">{t('index.dualBenefit.step2.label')}</p>
               <div className="hidden md:block w-px h-8 bg-slate-200 mt-3" />
             </div>
             <div className="flex md:justify-start">
@@ -411,10 +413,10 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
                     <Heart className="h-4 w-4 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">For Pet Owners</span>
+                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">{t('index.dualBenefit.forPetOwners')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">Tell your pet's story once — conversationally</p>
-                <p className="text-sm text-slate-500 leading-relaxed">No intimidating forms. A warm, empathetic conversation that feels like talking to a real person — so you can explain exactly what's going on.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step2.owner.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step2.owner.body')}</p>
               </div>
             </div>
 
@@ -425,17 +427,17 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                     <Briefcase className="h-4 w-4 text-[#0F2745]" />
                   </div>
-                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">For You</span>
+                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">{t('index.dualBenefit.forYou')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">Walk into every exam fully prepared</p>
-                <p className="text-sm text-slate-500 leading-relaxed">AI-generated visit brief with symptom analysis, breed-specific flags, and suggested diagnostics — before the pet even arrives.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step3.vet.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step3.vet.body')}</p>
               </div>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 rounded-full bg-[#0F2745] flex items-center justify-center shadow-lg ring-4 ring-[#0F2745]/10">
                 <FileText className="h-6 w-6 text-white" />
               </div>
-              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">Vet Reviews</p>
+              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">{t('index.dualBenefit.step3.label')}</p>
               <div className="hidden md:block w-px h-8 bg-slate-200 mt-3" />
             </div>
             <div className="flex md:justify-start">
@@ -444,10 +446,10 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
                     <Heart className="h-4 w-4 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">For Pet Owners</span>
+                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">{t('index.dualBenefit.forPetOwners')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">Your vet already understands your pet's situation</p>
-                <p className="text-sm text-slate-500 leading-relaxed">No repeating yourself. Your first real conversation starts where it should — with the exam, diagnosis, and next steps.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step3.owner.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step3.owner.body')}</p>
               </div>
             </div>
 
@@ -458,17 +460,17 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-[#0F2745]/8 flex items-center justify-center flex-shrink-0">
                     <Briefcase className="h-4 w-4 text-[#0F2745]" />
                   </div>
-                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">For You</span>
+                  <span className="text-xs font-semibold text-[#0F2745] uppercase tracking-wider">{t('index.dualBenefit.forYou')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">More time for what matters</p>
-                <p className="text-sm text-slate-500 leading-relaxed">Spend your time on diagnosis and treatment — not copying intake notes from voicemail or chasing down basic pet history.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step4.vet.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step4.vet.body')}</p>
               </div>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-14 h-14 rounded-full bg-[#0F2745] flex items-center justify-center shadow-lg ring-4 ring-[#0F2745]/10">
                 <ChevronRight className="h-6 w-6 text-white" />
               </div>
-              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">First Appointment</p>
+              <p className="text-xs font-bold text-[#0F2745] mt-3 text-center">{t('index.dualBenefit.step4.label')}</p>
             </div>
             <div className="flex md:justify-start">
               <div className="bg-white border border-slate-200 rounded-xl p-5 max-w-sm w-full shadow-sm">
@@ -476,21 +478,21 @@ const Index = () => {
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
                     <Heart className="h-4 w-4 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">For Pet Owners</span>
+                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">{t('index.dualBenefit.forPetOwners')}</span>
                 </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">A faster path to care for your pet</p>
-                <p className="text-sm text-slate-500 leading-relaxed">From "my pet needs a vet" to a prepared appointment — faster than you thought possible. The care of a specialist with the personal touch of a neighborhood practice.</p>
+                <p className="text-sm font-semibold text-slate-800 mb-1">{t('index.dualBenefit.step4.owner.title')}</p>
+                <p className="text-sm text-slate-500 leading-relaxed">{t('index.dualBenefit.step4.owner.body')}</p>
               </div>
             </div>
           </div>
 
           {/* Bottom tagline + link */}
           <p className="text-center text-sm text-slate-500 mt-14 mb-4">
-            Great pet care starts before the first appointment.
+            {t('index.dualBenefit.tagline')}
           </p>
           <div className="text-center">
             <Link to="/benefits" className="text-sm font-semibold text-[#0F2745] hover:underline inline-flex items-center gap-1">
-              See all benefits <ArrowRight className="h-3 w-3" />
+              {t('index.dualBenefit.seeAllBenefits')} <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
         </div>
@@ -500,28 +502,28 @@ const Index = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Simple, transparent pricing</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">{t('index.pricing.title')}</h2>
             <p className="text-lg text-slate-600 max-w-xl mx-auto">
-              Start free for 14 days. Cancel anytime.
+              {t('index.pricing.subtitle')}
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
             {/* Starter */}
             <div className="rounded-xl border border-slate-200 bg-white p-8">
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-2">Starter</p>
+              <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-2">{t('index.pricing.starter.name')}</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-4xl font-bold tracking-tight">$49</span>
-                <span className="text-slate-500 mb-1">/month</span>
+                <span className="text-4xl font-bold tracking-tight">{t('index.pricing.starter.price')}</span>
+                <span className="text-slate-500 mb-1">{t('index.pricing.starter.period')}</span>
               </div>
-              <p className="text-sm text-slate-500 mb-6">Up to 50 intakes/month</p>
+              <p className="text-sm text-slate-500 mb-6">{t('index.pricing.starter.limit')}</p>
               <ul className="space-y-2.5 mb-8">
                 {[
-                  'AI chat + structured form intake',
-                  'Branded assistant & vanity URL',
-                  'Bilingual (English & Spanish)',
-                  'Visit summary + AI context notes',
-                  'Email alerts for vet & pet owner',
-                  'Calendly scheduling integration',
+                  t('index.pricing.starter.f1'),
+                  t('index.pricing.starter.f2'),
+                  t('index.pricing.starter.f3'),
+                  t('index.pricing.starter.f4'),
+                  t('index.pricing.starter.f5'),
+                  t('index.pricing.starter.f6'),
                 ].map(f => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-slate-600">
                     <Check className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
@@ -530,27 +532,27 @@ const Index = () => {
                 ))}
               </ul>
               <a href="#waitlist" className="block text-center border border-[#0F2745] text-[#0F2745] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#0F2745] hover:text-white transition">
-                Join the Waitlist
+                {t('index.hero.cta')}
               </a>
             </div>
             {/* Pro */}
             <div className="rounded-xl border-2 border-[#0F2745] bg-white p-8 relative">
               <div className="absolute -top-3 left-6">
-                <span className="bg-[#0F2745] text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</span>
+                <span className="bg-[#0F2745] text-white text-xs font-semibold px-3 py-1 rounded-full">{t('index.pricing.pro.badge')}</span>
               </div>
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-2">Pro</p>
+              <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-2">{t('index.pricing.pro.name')}</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-4xl font-bold tracking-tight">$79</span>
-                <span className="text-slate-500 mb-1">/month</span>
+                <span className="text-4xl font-bold tracking-tight">{t('index.pricing.pro.price')}</span>
+                <span className="text-slate-500 mb-1">{t('index.pricing.pro.period')}</span>
               </div>
-              <p className="text-sm text-slate-500 mb-6">Up to 150 intakes/month</p>
+              <p className="text-sm text-slate-500 mb-6">{t('index.pricing.pro.limit')}</p>
               <ul className="space-y-2.5 mb-8">
                 {[
-                  'Everything in Starter',
-                  'Marketing Kit — AI social posts & branded cards',
-                  'Facebook, Instagram, LinkedIn, Nextdoor',
-                  'Website banner downloads',
-                  'English & Spanish marketing copy',
+                  t('index.pricing.pro.f1'),
+                  t('index.pricing.pro.f2'),
+                  t('index.pricing.pro.f3'),
+                  t('index.pricing.pro.f4'),
+                  t('index.pricing.pro.f5'),
                 ].map(f => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-slate-600">
                     <Check className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
@@ -559,24 +561,24 @@ const Index = () => {
                 ))}
               </ul>
               <a href="#waitlist" className="block text-center bg-[#0F2745] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#0C2038] transition">
-                Join the Waitlist
+                {t('index.hero.cta')}
               </a>
             </div>
             {/* Pro+ */}
             <div className="rounded-xl border border-slate-200 bg-white p-8">
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-2">Pro+</p>
+              <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-2">{t('index.pricing.proPlus.name')}</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-4xl font-bold tracking-tight">$119</span>
-                <span className="text-slate-500 mb-1">/month</span>
+                <span className="text-4xl font-bold tracking-tight">{t('index.pricing.proPlus.price')}</span>
+                <span className="text-slate-500 mb-1">{t('index.pricing.proPlus.period')}</span>
               </div>
-              <p className="text-sm text-slate-500 mb-6">Unlimited intakes</p>
+              <p className="text-sm text-slate-500 mb-6">{t('index.pricing.proPlus.limit')}</p>
               <ul className="space-y-2.5 mb-8">
                 {[
-                  'Everything in Pro',
-                  'Dedicated AI phone intake line',
-                  'Document Intelligence — AI record analysis',
-                  'Pet owners speak naturally with your assistant',
-                  '24/7 availability — never miss a call',
+                  t('index.pricing.proPlus.f1'),
+                  t('index.pricing.proPlus.f2'),
+                  t('index.pricing.proPlus.f3'),
+                  t('index.pricing.proPlus.f4'),
+                  t('index.pricing.proPlus.f5'),
                 ].map(f => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-slate-600">
                     <Check className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
@@ -585,12 +587,12 @@ const Index = () => {
                 ))}
               </ul>
               <a href="#waitlist" className="block text-center border border-[#0F2745] text-[#0F2745] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#0F2745] hover:text-white transition">
-                Join the Waitlist
+                {t('index.hero.cta')}
               </a>
             </div>
           </div>
           <p className="text-center text-sm text-slate-500 mt-6">
-            All plans include a 14-day free trial. <Link to="/pricing" className="text-[#0F2745] hover:underline font-medium">Compare plans →</Link>
+            {t('index.pricing.trialNote')} <Link to="/pricing" className="text-[#0F2745] hover:underline font-medium">{t('index.pricing.comparePlans')}</Link>
           </p>
         </div>
       </section>
@@ -599,16 +601,16 @@ const Index = () => {
       <section id="waitlist" className="py-20 md:py-28 bg-slate-50 border-y border-slate-100">
         <div className="max-w-xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Get notified at launch</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">{t('index.waitlist.title')}</h2>
             <p className="text-lg text-slate-600">
-              SoloVetAI is coming Q2 2026. Leave your info and we'll let you know the moment it's ready.
+              {t('index.waitlist.subtitle')}
             </p>
           </div>
           {submitted ? (
             <div className="text-center py-8">
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4"><Check className="h-6 w-6 text-green-600" /></div>
-              <h3 className="text-xl font-semibold mb-2">You're on the list!</h3>
-              <p className="text-slate-600">We'll notify you when SoloVetAI launches.</p>
+              <h3 className="text-xl font-semibold mb-2">{t('index.waitlist.success.title')}</h3>
+              <p className="text-slate-600">{t('index.waitlist.success.message')}</p>
             </div>
           ) : (
           <form
@@ -617,56 +619,56 @@ const Index = () => {
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">{t('index.waitlist.nameLabel')}</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   required
                   className="w-full rounded-md border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#10B981]/50 focus:border-[#10B981]"
-                  placeholder="Dr. Jane Smith"
+                  placeholder={t('index.waitlist.namePlaceholder')}
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">{t('index.waitlist.emailLabel')}</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
                   className="w-full rounded-md border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#10B981]/50 focus:border-[#10B981]"
-                  placeholder="jane@example.com"
+                  placeholder={t('index.waitlist.emailPlaceholder')}
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="practice" className="block text-sm font-medium text-slate-700 mb-1">Practice Type</label>
+              <label htmlFor="practice" className="block text-sm font-medium text-slate-700 mb-1">{t('index.waitlist.practiceLabel')}</label>
               <input
                 type="text"
                 id="practice"
                 name="practice"
                 className="w-full rounded-md border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#10B981]/50 focus:border-[#10B981]"
-                placeholder="Small animal, equine, mixed practice, etc."
+                placeholder={t('index.waitlist.practicePlaceholder')}
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message (optional)</label>
+              <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">{t('index.waitlist.messageLabel')}</label>
               <textarea
                 id="message"
                 name="message"
                 rows={3}
                 className="w-full rounded-md border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#10B981]/50 focus:border-[#10B981]"
-                placeholder="Anything else you'd like us to know?"
+                placeholder={t('index.waitlist.messagePlaceholder')}
               />
             </div>
             <button
               type="submit"
               className="w-full bg-[#0F2745] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#0C2038] transition"
             >
-              Join the Waitlist
+              {t('index.waitlist.submit')}
             </button>
             <p className="text-xs text-slate-500 text-center">
-              We'll notify you when SoloVetAI launches. No spam, ever.
+              {t('index.waitlist.noSpam')}
             </p>
           </form>
           )}
@@ -677,27 +679,27 @@ const Index = () => {
       <section className="bg-[#0F2745]">
         <div className="max-w-5xl mx-auto px-6 lg:px-8 py-20 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
-            Your intake runs while you're in surgery.
+            {t('index.closing.title')}
           </h2>
           <p className="text-lg text-white/75 max-w-xl mx-auto mb-8">
-            Stop losing new patients to missed calls and after-hours gaps. Chat, phone, and document intake — always on, always branded, always ready.
+            {t('index.closing.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#waitlist"
               className="bg-white text-[#0F2745] px-8 py-3.5 rounded-md text-sm font-semibold hover:bg-slate-100 transition inline-flex items-center gap-2"
             >
-              Join the Waitlist
+              {t('index.closing.cta')}
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
               to="/pricing"
               className="text-white/70 hover:text-white text-sm font-medium transition"
             >
-              View pricing →
+              {t('index.closing.viewPricing')}
             </Link>
           </div>
-          <p className="mt-4 text-white/65 text-xs">Coming Q2 2026</p>
+          <p className="mt-4 text-white/65 text-xs">{t('index.closing.launchDate')}</p>
         </div>
       </section>
     </>

@@ -1,10 +1,14 @@
 export interface BlogPost {
   slug: string;
   title: string;
+  titleEs?: string;
   excerpt: string;
+  excerptEs?: string;
   category: string;
+  categoryEs?: string;
   date: string;
   content: string;
+  contentEs?: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -14,6 +18,9 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Most new client inquiries happen outside business hours. If you're a sole proprietor vet with no one answering at 9pm, those clients are finding someone else by morning.",
     category: "Small Business Growth",
     date: "March 21, 2026",
+    titleEs: "Las consultas de clientes fuera de horario están afectando tu clínica veterinaria — Así puedes solucionarlo",
+    excerptEs: "La mayoría de las consultas de nuevos clientes ocurren fuera del horario de atención. Si eres un veterinario independiente sin nadie que conteste a las 9 de la noche, esos clientes habrán encontrado a otro profesional para la mañana.",
+    categoryEs: "Crecimiento de Pequeños Negocios",
     content: `
 <p>Here's a stat that should keep every solo veterinarian up at night: <strong>the majority of new client inquiries happen outside of business hours.</strong> Evenings. Weekends. Holidays. The exact times when you're not at your desk — or you're finally getting a break from a 10-hour day of back-to-back appointments.</p>
 
@@ -56,6 +63,49 @@ export const blogPosts: BlogPost[] = [
 <blockquote>The best client onboarding system is one that works while you're doing what you actually went to vet school to do — caring for animals.</blockquote>
 
 <p>If you're losing clients you never knew about, the problem isn't your skills or your care. It's your availability. And that's a problem that technology can solve.</p>
+`,
+    contentEs: `
+<p>Esta es una estadística que debería preocupar a todo veterinario independiente: <strong>la mayoría de las consultas de nuevos clientes ocurren fuera del horario de atención.</strong> Por las noches. Los fines de semana. Los días festivos. Justo en los momentos en que no estás en tu escritorio — o finalmente estás descansando después de un día de 10 horas con citas consecutivas.</p>
+
+<p>¿Y qué pasa con esas consultas? Nada. El teléfono suena y salta al buzón de voz. El formulario de contacto queda en tu bandeja de entrada. El posible cliente — preocupado por su mascota, listo para agendar — espera. Y para la mañana, ya llamó a otra clínica que sí contestó.</p>
+
+<h2>El verdadero costo de las consultas perdidas</h2>
+<p>Piensa en lo que vale un solo cliente nuevo para tu clínica. La primera consulta, las citas de seguimiento, las vacunas, las limpiezas dentales, las visitas de emergencia — a lo largo de la vida de una mascota, son miles de dólares. Ahora multiplica eso por cada buzón de voz que nunca fue devuelto, cada formulario de contacto que esperó 12 horas, cada llamada fuera de horario que no llegó a nada.</p>
+
+<p>Para veterinarios independientes y pequeñas clínicas veterinarias, esto no es solo ingresos perdidos — es una fuga invisible que quizás ni siquiera te des cuenta de que está ocurriendo. Nunca ves a los clientes que nunca conseguiste.</p>
+
+<h2>El problema no es tu dedicación</h2>
+<p>Seamos honestos sobre por qué sucede esto. No es porque no te importe. Es porque estás:</p>
+<ul>
+  <li>En medio de una cirugía cuando suena el teléfono</li>
+  <li>Examinando a un paciente mientras se acumulan tres mensajes de voz</li>
+  <li>Finalmente sentándote a cenar cuando alguien envía un formulario en tu sitio web</li>
+  <li>Usando tu hora de almuerzo para devolver llamadas en lugar de comer</li>
+  <li>Cerrado el domingo cuando un nuevo dueño de mascota necesita orientación urgente</li>
+</ul>
+<p>No puedes ser el veterinario, la recepcionista, el coordinador de seguimiento y el servicio de atención fuera de horario. Nadie puede. Pero eso es exactamente lo que exige ser un profesional independiente.</p>
+
+<h2>¿Qué pasaría si cada consulta recibiera una respuesta — al instante?</h2>
+<p>Imagina esto: un dueño de mascota visita tu sitio web a las 9 de la noche un sábado. Su perro ha estado actuando extraño y quiere encontrar un nuevo veterinario. En lugar de un formulario de contacto y un mensaje de "le responderemos en horario de atención", es recibido por un asistente de IA que:</p>
+<ul>
+  <li>Pregunta sobre su mascota — raza, edad, qué está pasando</li>
+  <li>Captura su información de contacto y preferencias</li>
+  <li>Ofrece una primera impresión cálida y profesional de tu clínica</li>
+  <li>Entrega un resumen completo a tu bandeja de entrada, listo para el lunes por la mañana</li>
+</ul>
+<p>Para cuando abras tu computadora el lunes, tienes un expediente estructurado de nuevo paciente con todo lo que necesitas — y el cliente ya se siente atendido. Sin jugar al teléfono. Sin clientes potenciales perdidos. Sin el limbo del buzón de voz.</p>
+
+<h2>No es solo fuera de horario</h2>
+<p>El mismo problema ocurre durante el horario de atención también. Cada llamada telefónica que interrumpe una consulta. Cada visita sin cita mientras estás en medio de un procedimiento. Cada "¿puede esperar?" que termina en una llamada colgada. Para clínicas pequeñas sin personal dedicado en recepción, cada interrupción te cuesta el doble — una vez por la interrupción al paciente que estás atendiendo, y otra por el posible cliente que podrías perder.</p>
+
+<p>La admisión de clientes impulsada por IA maneja todos estos canales — web, teléfono, incluso chat en tu sitio web — para que las consultas se capturen sin importar cuándo o cómo lleguen.</p>
+
+<h2>La realidad competitiva</h2>
+<p>Las cadenas veterinarias corporativas tienen centros de llamadas, personal fuera de horario y sistemas de reserva en línea. Como veterinario independiente, no puedes igualar su cantidad de personal — pero puedes igualar su disponibilidad. La IA le da a los veterinarios independientes la misma presencia permanente que tienen las grandes cadenas, sin los gastos generales.</p>
+
+<blockquote>El mejor sistema de admisión de clientes es aquel que funciona mientras tú haces lo que realmente estudiaste en la facultad de veterinaria — cuidar animales.</blockquote>
+
+<p>Si estás perdiendo clientes que nunca supiste que existían, el problema no son tus habilidades ni tu atención. Es tu disponibilidad. Y ese es un problema que la tecnología puede resolver.</p>
 `
   },
   {
@@ -64,6 +114,9 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Word of mouth is great until it isn't. Here's why independent veterinary practices lose leads they don't even know about, and five strategies that work without a marketing budget.",
     category: "Lead Generation",
     date: "March 21, 2026",
+    titleEs: "Por qué los veterinarios independientes luchan con la captación de clientes — Y qué funciona realmente",
+    excerptEs: "El boca a boca es excelente hasta que deja de serlo. Descubre por qué las clínicas veterinarias independientes pierden clientes potenciales sin saberlo, y cinco estrategias que funcionan sin necesidad de un presupuesto de marketing.",
+    categoryEs: "Captación de Clientes",
     content: `
 <p>You became a veterinarian to help animals, not to run a marketing department. But as a sole proprietor, lead generation isn't optional — it's survival. And the uncomfortable truth is that most independent vet practices are hemorrhaging potential clients without realizing it.</p>
 
@@ -103,6 +156,46 @@ export const blogPosts: BlogPost[] = [
 <blockquote>You don't need more leads. You need to stop losing the ones you're already getting.</blockquote>
 
 <p>Fix your response time, expand your channels, and build systems that work when you can't. That's lead generation for a sole proprietorship — and it's more affordable than you think.</p>
+`,
+    contentEs: `
+<p>Te hiciste veterinario para ayudar a los animales, no para dirigir un departamento de marketing. Pero como profesional independiente, la captación de clientes no es opcional — es supervivencia. Y la verdad incómoda es que la mayoría de las clínicas veterinarias independientes están perdiendo clientes potenciales sin darse cuenta.</p>
+
+<h2>Los clientes potenciales que nunca ves</h2>
+<p>Esto es lo que probablemente está pasando en tu clínica ahora mismo:</p>
+<ul>
+  <li>Alguien llama durante tu hora de almuerzo — buzón de voz. Llaman a otra clínica en su lugar.</li>
+  <li>Un dueño de mascota llena tu formulario de contacto web el domingo por la noche — lo ves el lunes por la tarde. Ya agendaron en otro lado.</li>
+  <li>Un cliente intenta llamar mientras estás en cirugía — no hay respuesta. Buscan en Google "veterinario cerca de mí" y eligen a alguien que sí contesta.</li>
+  <li>Un posible cliente visita tu sitio web a las 8 de la noche, no ve una forma de comunicarse y se va.</li>
+</ul>
+<p>Ninguno de estos aparece como "clientes potenciales perdidos" en ningún informe. Son invisibles. Pero se acumulan — y para pequeñas clínicas veterinarias, cada cliente perdido representa miles de dólares en valor de por vida.</p>
+
+<h2>Por qué el boca a boca no es suficiente</h2>
+<p>Las recomendaciones son tu mejor fuente de nuevos clientes. Pero son impredecibles, y solo funcionan cuando tus clientes actuales conocen a alguien que busca un veterinario. No puedes escalar el boca a boca. Necesitas sistemas que generen clientes potenciales de forma constante — especialmente los que llegan cuando estás ocupado haciendo tu trabajo real.</p>
+
+<h2>Cinco estrategias que funcionan para veterinarios independientes</h2>
+
+<h3>1. Haz que tu perfil de Google Business trabaje más</h3>
+<p>Cuando alguien busca "veterinario cerca de mí" o "veterinario de emergencia [tu ciudad]", tu perfil de Google Business es tu escaparate. Mantén el horario actualizado, agrega fotos regularmente y responde activamente a cada reseña. Las clínicas con más de 20 reseñas recientes superan consistentemente a la competencia en los resultados. Esto no cuesta nada más que 15 minutos a la semana.</p>
+
+<h3>2. Elimina la demora en la respuesta</h3>
+<p>La razón número uno por la que los clientes potenciales se enfrían es el tiempo de respuesta. Si un posible cliente se comunica y no recibe respuesta en una hora, las probabilidades de convertirlo caen drásticamente. Las herramientas de admisión impulsadas por IA responden al instante — ya sea que la consulta llegue a las 2 de la tarde o a las 2 de la madrugada — capturando la información del cliente y haciéndolo sentir escuchado antes de que tú hayas visto el mensaje.</p>
+
+<h3>3. Ofrece múltiples formas de comunicarse</h3>
+<p>Algunas personas llaman. Algunas llenan formularios. Algunas quieren chatear. Algunas solo se comunicarán fuera del horario de atención. Si tu único canal de admisión es un número de teléfono y una dirección de correo electrónico, estás excluyendo a una gran parte de los posibles clientes. Las clínicas pequeñas más efectivas ofrecen chat web, admisión telefónica y formularios en línea — todo alimentando un solo sistema.</p>
+
+<h3>4. Construye alianzas locales</h3>
+<p>Peluqueros caninos, tiendas de mascotas, entrenadores de perros, guarderías para mascotas y refugios atienden a dueños de mascotas. Las alianzas de referencias cruzadas no cuestan nada y generan clientes potenciales de alta calidad con confianza incorporada. Una recomendación de su peluquero canino tiene más peso que cualquier anuncio.</p>
+
+<h3>5. Captura y da seguimiento — No solo contestes</h3>
+<p>La mayoría de las clínicas veterinarias tratan las consultas como interacciones de una sola vez: el cliente llama, tú contestas (o no), y eso es todo. La captación inteligente de clientes significa capturar cada consulta en un sistema estructurado para que nada se pierda. Incluso si alguien no agenda hoy, tener su información significa que puedes dar seguimiento mañana.</p>
+
+<h2>En resumen</h2>
+<p>La captación de clientes para clínicas veterinarias independientes no se trata de gastar dinero en anuncios. Se trata de asegurarte de que cada persona que intenta comunicarse contigo realmente lo logre — sin importar cuándo lo intente o cómo prefiera comunicarse.</p>
+
+<blockquote>No necesitas más clientes potenciales. Necesitas dejar de perder los que ya estás recibiendo.</blockquote>
+
+<p>Mejora tu tiempo de respuesta, amplía tus canales y construye sistemas que funcionen cuando tú no puedes. Eso es captación de clientes para un profesional independiente — y es más accesible de lo que piensas.</p>
 `
   },
   {
@@ -111,6 +204,9 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Paper forms and phone tag are costing your practice time, money, and clients. Here's how modern onboarding works — and why it matters more than you think.",
     category: "Client Onboarding",
     date: "March 21, 2026",
+    titleEs: "La guía completa de admisión de clientes para pequeñas clínicas veterinarias",
+    excerptEs: "Los formularios en papel y el juego del teléfono le están costando a tu clínica tiempo, dinero y clientes. Así funciona la admisión moderna — y por qué importa más de lo que crees.",
+    categoryEs: "Admisión de Clientes",
     content: `
 <p>First impressions matter — and for a veterinary practice, the client's first impression isn't the exam room. It's the onboarding experience. How easy was it to reach you? How quickly did they hear back? Did they feel like their concerns were heard? Did the process respect their time?</p>
 
@@ -159,6 +255,55 @@ export const blogPosts: BlogPost[] = [
 <blockquote>Your clients don't care about your systems. They care about being heard, being helped, and being respected. Great onboarding delivers all three — without requiring you to be available 24 hours a day.</blockquote>
 
 <p>The practices that figure this out first will be the ones that thrive. The ones that keep relying on voicemails and clipboards will keep wondering where their new clients went.</p>
+`,
+    contentEs: `
+<p>Las primeras impresiones importan — y para una clínica veterinaria, la primera impresión del cliente no es la sala de consulta. Es la experiencia de admisión. ¿Qué tan fácil fue comunicarse contigo? ¿Qué tan rápido recibieron respuesta? ¿Sintieron que sus preocupaciones fueron escuchadas? ¿El proceso respetó su tiempo?</p>
+
+<p>Para pequeñas clínicas veterinarias y profesionales independientes, el proceso de admisión suele ser el eslabón más débil. No por falta de atención, sino por falta de capacidad. Estás demasiado ocupado haciendo el trabajo como para gestionar el proceso de incorporar nuevos clientes.</p>
+
+<h2>Qué está saliendo mal realmente</h2>
+<p>Veamos cómo es la experiencia típica de un nuevo cliente en muchas clínicas veterinarias independientes:</p>
+<ul>
+  <li><strong>La llamada:</strong> El cliente llama en horario de atención. Si estás con un paciente (que generalmente lo estás), salta al buzón de voz. Tal vez dejan un mensaje. Tal vez no.</li>
+  <li><strong>El buzón de voz:</strong> Revisas los mensajes entre citas — quizás a la hora del almuerzo, quizás al final del día. Devuelves la llamada. No contestan. Comienza el juego del teléfono.</li>
+  <li><strong>El formulario:</strong> El cliente llena un formulario de contacto en tu sitio web. Queda en una bandeja de entrada que revisas cuando te acuerdas. Para cuando respondes, han pasado 6 horas — o 6 días.</li>
+  <li><strong>La visita sin cita:</strong> El cliente llega sin cita previa. Le entregas un portapapeles con un formulario en papel. Lo llenan (parcialmente, con letra ilegible). Alguien tiene que volver a escribirlo todo después.</li>
+  <li><strong>La consulta fuera de horario:</strong> El cliente tiene una preocupación urgente a las 8 de la noche. Tu sitio web dice "Llame en horario de atención". Buscan otro veterinario en Google.</li>
+</ul>
+
+<p>Cada uno de estos escenarios pierde tiempo, genera frustración y arriesga perder al cliente por completo. Para un profesional independiente sin personal administrativo, este ciclo es agotador — y está sucediendo todos los días.</p>
+
+<h2>Cómo es la admisión moderna de clientes</h2>
+<p>Las mejores clínicas veterinarias independientes han cambiado a un modelo donde la admisión ocurre <strong>antes de que el cliente llegue</strong> — y funciona según el horario del cliente, no el tuyo.</p>
+
+<h3>Paso 1: Respuesta inmediata</h3>
+<p>Ya sea que un cliente llame, visite tu sitio web o envíe un mensaje fuera de horario, recibe una respuesta inmediata. Un asistente impulsado por IA lo saluda, hace preguntas relevantes sobre su mascota y sus preocupaciones, y captura todo en un formato estructurado. Sin música de espera. Sin buzón de voz. Sin "le responderemos pronto".</p>
+
+<h3>Paso 2: Captura inteligente de información</h3>
+<p>En lugar de formularios genéricos, la conversación se adapta a la situación. A un nuevo dueño de cachorro se le pregunta sobre el historial de vacunación y la raza. A un cliente con un gato enfermo se le pregunta sobre síntomas, inicio y urgencia. La IA captura especie, raza, edad, historial médico, medicamentos actuales y motivo de la visita — organizado y listo para que lo revises.</p>
+
+<h3>Paso 3: Recibes un resumen, no una pila de papeleo</h3>
+<p>Antes de la cita, recibes un resumen conciso: datos del cliente, perfil de la mascota, preocupaciones y cualquier señal de urgencia. Entras a la sala de consulta preparado e informado. El cliente se siente escuchado. Tú te sientes organizado. Toda la interacción comienza con buen pie.</p>
+
+<h2>Por qué esto importa para pequeños negocios</h2>
+<p>No se trata de reemplazar el toque personal — se trata de protegerlo. Cuando no estás ahogándote en tareas administrativas, juegos telefónicos y entrada de datos, tienes más tiempo y energía para lo que realmente importa: la relación con el cliente y la medicina.</p>
+
+<p>La admisión moderna de clientes también nivela el campo de juego. Las cadenas veterinarias corporativas tienen centros de llamadas, portales de reserva en línea y disponibilidad las 24 horas. Como profesional independiente, puedes ofrecer la misma experiencia con herramientas de IA — sin el gasto de contratar personal.</p>
+
+<h2>Los números</h2>
+<p>Las clínicas que implementan admisión asistida por IA típicamente ven:</p>
+<ul>
+  <li><strong>Cero consultas perdidas fuera de horario</strong> — cada posible cliente recibe una respuesta</li>
+  <li><strong>30-45 minutos ahorrados por nuevo cliente</strong> — sin entrada manual de datos, sin juegos telefónicos</li>
+  <li><strong>Mayores tasas de conversión</strong> — la respuesta instantánea supera al "le devolveremos la llamada" cada vez</li>
+  <li><strong>Mejores resultados en la primera consulta</strong> — tienes contexto antes de que comience el examen</li>
+</ul>
+
+<p>Para una pequeña clínica veterinaria que atiende 8-10 nuevos clientes por semana, eso son 4-6 horas de tiempo administrativo recuperadas — cada semana. Tiempo que puedes dedicar a atender pacientes, construir relaciones o finalmente tomarte un descanso adecuado para almorzar.</p>
+
+<blockquote>A tus clientes no les importan tus sistemas. Les importa ser escuchados, ser ayudados y ser respetados. Una excelente admisión ofrece las tres cosas — sin requerir que estés disponible las 24 horas del día.</blockquote>
+
+<p>Las clínicas que descubran esto primero serán las que prosperen. Las que sigan dependiendo de buzones de voz y portapapeles seguirán preguntándose a dónde fueron sus nuevos clientes.</p>
 `
   }
 ];
