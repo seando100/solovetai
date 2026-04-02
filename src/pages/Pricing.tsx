@@ -58,7 +58,7 @@ const Pricing = () => {
           {/* Starter */}
           <Card className="border border-slate-200 flex flex-col">
             <CardHeader className="pb-2 pt-8 px-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">{t('pricing.starter.name')}</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">{t('pricing.starter.name')}</p>
               <div className="mb-1">
                 <span className="text-5xl font-bold">{t('pricing.starter.price')}</span>
                 <span className="text-muted-foreground text-lg"> {t('pricing.starter.period')}</span>
@@ -134,7 +134,7 @@ const Pricing = () => {
           {/* Pro+ */}
           <Card className="border border-slate-200 flex flex-col relative">
             <CardHeader className="pb-2 pt-8 px-8">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-1.5">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3 flex items-center gap-1.5">
                 <Phone className="h-3 w-3" />
                 {t('pricing.proPlus.name')}
               </p>
